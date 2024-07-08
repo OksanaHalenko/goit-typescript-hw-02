@@ -1,0 +1,17 @@
+.list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.item {
+  position: relative;
+  overflow: hidden;
+}
+.item:hover,
+.item:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px gold;
+}
