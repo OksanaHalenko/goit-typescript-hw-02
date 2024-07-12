@@ -1,7 +1,12 @@
 import ImageCard from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
+import { ImageGalleryType } from "./ImageGallery.types";
 
-function ImageGallery({ images, onClick, scrollRef }) {
+const ImageGallery: React.FC<ImageGalleryType> = ({
+  images,
+  onClick,
+  scrollRef,
+}) => {
   return (
     <ul className={css.list} ref={scrollRef}>
       {images.map((image) => {
@@ -13,6 +18,6 @@ function ImageGallery({ images, onClick, scrollRef }) {
       })}
     </ul>
   );
-}
+};
 
 export default ImageGallery;

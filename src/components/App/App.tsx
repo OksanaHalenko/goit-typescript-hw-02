@@ -11,24 +11,24 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "../ImageModal/ImageModal";
 
-function App() {
-  const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [topic, setTopic] = useState("");
-  const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState();
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [modalIsOpen, setIsOpen] = useState(false);
+import { ImagesType } from "./App.types";
 
-  const scrollRef = useRef();
+function App() {
+  const [images, setImages] = useState<ImagesType[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [topic, setTopic] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [totalPage, setTotalPage] = useState<number>();
+  const [selectedImage, setSelectedImage] = useState<ImagesType | null>(null);
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+
+  const scrollRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     if (images.length > 0) {
-      const { height } =
-        scrollRef.current.firstElementChild.getBoundingClientRect();
       window.scrollBy({
-        top: height * 2,
+        top: 720,
         behavior: "smooth",
       });
     }
@@ -57,7 +57,7 @@ function App() {
     handleSearch();
   }, [page, topic]);
 
-  const handleSubmit = async (dataSearch) => {
+  const handleSubmit = async (dataSearch: string) => {
     setTopic(dataSearch);
     setImages([]);
     setPage(1);
@@ -67,7 +67,7 @@ function App() {
     setPage(page + 1);
   };
 
-  function openModal(image) {
+  function openModal(image: ImagesType) {
     setSelectedImage(image);
     setIsOpen(true);
   }

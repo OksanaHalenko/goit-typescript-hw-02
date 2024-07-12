@@ -1,11 +1,13 @@
 import ReactModal from "react-modal";
 import css from "./ImageModal.module.css";
+import { ImageModalTypes } from "./ImageModal.types";
 ReactModal.setAppElement("#root");
-function ImageModal({
+
+const ImageModal: React.FC<ImageModalTypes> = ({
   modalIsOpen,
   closeModal,
   image: { alt_description, urls, user, likes },
-}) {
+}) => {
   return (
     <ReactModal
       className={css.modalWindow}
@@ -30,6 +32,6 @@ function ImageModal({
       </div>
     </ReactModal>
   );
-}
+};
 
 export default ImageModal;
